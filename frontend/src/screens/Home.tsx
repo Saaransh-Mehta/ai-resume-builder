@@ -1,7 +1,10 @@
 import LogoMarquee from '@/components/Marquee';
 import Navbar from '@/components/Navbar'
 import { CircleCheckBig } from 'lucide-react';
+// import { useNavigate } from 'react-router-dom';
 const Home = () => {
+
+  // const navigate = useNavigate()
   return (
     <>
       <div className="navbar">
