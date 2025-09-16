@@ -2,18 +2,17 @@ import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { userAuthStore } from "@/store/userStore"
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
+import { useNavigate } from "react-router-dom"
+// import templates from '../templates/templates.js'
 
-const Dashboard = () => {
+const BrowseTemplates = () => {
   const user = userAuthStore((state) => state.user)
   const [dropdownOpen, setDropdownOpen] = useState(false)
-  const currentTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-  console.log(currentTime)
-  function getGreeting() {
-  const hour = new Date().getHours()
-  if (hour < 12) return "Good morning"
-  if (hour < 18) return "Good afternoon"
-  return "Good evening"
-}
+const navigate = useNavigate()
+  if(!user){
+    navigate("/login")
+  }
+
 
   const avatarUrl = "https://github.com/shadcn.png"
 
@@ -57,14 +56,23 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
-            <div className="main-section container flex flex-col gap-3 mx-auto p-8">
-                <h2 className="text-2xl font-normal monsteratt mb-6">{getGreeting()} {user?.name} !</h2>
-                <h2 className="text-lg font-light">Manage Your Resumes or Enhance the previous one with AI </h2>
+            <div className="main-section container flex flex-col justify-center gap-3 mx-auto p-8">
+              <div className="flex flex-col max-w-[720px] gap-3 mx-auto justify-center items-center mt-5">
 
+                <h1 className=" text-4xl monsteratt font-semibold">Browse Templates</h1>
+                <div className="flex flex-col justify-center items-center ">
+                <p>Each resume template is designed to follow the exact rules you need to get hired faster.</p>
+                <p> Use our resume templates and get free access to 18 more career tools!</p>
+                </div>
+              </div>
+
+              <div className="main-mid-section">
+
+              </div>
             </div>
 
     </div>
   )
 }
 
-export default Dashboard
+export default BrowseTemplates
